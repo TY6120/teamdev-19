@@ -1,7 +1,6 @@
 import React from "react";
 import ArticleDetail from "@/components/ArticleDetail";
 import { supabase } from "@/libs/supabase";
-import { Metadata } from "next";
 
 type PageProps = {
   params: Promise<{ id: string }>;
