@@ -1,13 +1,17 @@
 import React from "react";
 import ArticleDetail from "@/components/ArticleDetail";
 import { supabase } from "@/libs/supabase";
+import { Metadata } from "next";
+
+type PageProps = {
+  params: Promise<{ id: string }>;
+  searchParams: { [key: string]: string | string[] | undefined };
+};
 
 export default async function ArticlePage({
   params,
-}: {
-  params: { id: string }
-}) {
-  const { id } = params;
+}: PageProps) {
+  const { id } = await params;
 
   const postId = Number(id);
 
