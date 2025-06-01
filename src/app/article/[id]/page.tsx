@@ -8,10 +8,9 @@ interface ArticlePageProps {
   };
 }
 
-export default async function ArticlePage({
-  params}: ArticlePageProps){
+export default async function ArticlePage({ params }: ArticlePageProps) {
   const { id } = params;
-  
+
   const postId = Number(id);
 
   const { data: post, error } = await supabase
@@ -26,7 +25,7 @@ export default async function ArticlePage({
 
   const { data: user, error: userError } = await supabase
     .from("users")
-    .select("id, name, image_path") 
+    .select("id, name, image_path")
     .eq("id", post.user_id)
     .single();
 
@@ -37,7 +36,7 @@ export default async function ArticlePage({
   const postWithUser = {
     ...post,
     user,
-    category: post.category, 
+    category: post.category,
   };
 
   return (
